@@ -2279,9 +2279,9 @@ export const gateways: Gateway[] = [
     name: "PopNow",
     website: "https://popnow.ai",
     summary:
-      "Hosted multi-provider API for chat, image, video and audio generation.",
+      "Hosted API for image, video and audio generation.",
     differentiator:
-      "Documents native media tasks alongside OpenAI-compatible chat and video routes.",
+      "Media-generation tasks with a hosted MCP integration.",
     type: "managed",
     tier: "additional",
     jurisdictionBucket: "unresolved",
@@ -2299,15 +2299,13 @@ export const gateways: Gateway[] = [
     endpoints: metric(
       notPublished("No endpoint total was counted or established for this proposal."),
     ),
-    modalities: field(["llm", "image", "video", "audio", "tts", "mcp"], "vendor-stated", {
+    modalities: field(["image", "video", "audio"], "vendor-stated", {
       sources: ["reference", "mcp"],
       asOf: "2026-10-26",
     }),
-    openaiCompatible: field("partial", "vendor-stated", {
-      note: "Documents Chat Completions, stateless Responses, model listing and Videos under https://api.popnow.ai/v1. Native media tasks use https://api.popnow.ai/api/v1. This is documented coverage, not an independent compatibility test or a claim that every OpenAI endpoint is supported.",
-      sources: ["reference", "chat", "videos"],
-      asOf: "2026-10-26",
-    }),
+    openaiCompatible: unverified(
+      "Generic OpenAI API compatibility is unverified for this media-only record; no protocol coverage is asserted.",
+    ),
     deployment: field(["hosted"], "vendor-stated", {
       sources: ["reference", "mcp"],
       asOf: "2026-10-26",
@@ -2317,9 +2315,7 @@ export const gateways: Gateway[] = [
       asOf: "2026-10-26",
     }),
     sources: [
-      { id: "reference", kind: "documentation", label: "API reference and base URLs", url: "https://popnow.ai/docs/api-reference", retrieved: "2026-10-26" },
-      { id: "chat", kind: "documentation", label: "Chat protocols and OpenAI SDK compatibility", url: "https://popnow.ai/docs/chat", retrieved: "2026-10-26" },
-      { id: "videos", kind: "documentation", label: "OpenAI Videos compatibility", url: "https://popnow.ai/docs/openai-videos", retrieved: "2026-10-26" },
+      { id: "reference", kind: "documentation", label: "Media API reference", url: "https://popnow.ai/docs/api-reference", retrieved: "2026-10-26" },
       { id: "mcp", kind: "documentation", label: "Hosted MCP and media generation", url: "https://popnow.ai/docs/mcp", retrieved: "2026-10-26" },
       { id: "billing", kind: "pricing", label: "API USD billing and OAuth credit boundary", url: "https://popnow.ai/docs/billing", retrieved: "2026-10-26" },
     ],
